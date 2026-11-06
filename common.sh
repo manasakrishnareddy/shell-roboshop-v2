@@ -10,12 +10,12 @@ check_root(){
 if [ $user_id -ne 0 ]; then
     echo "Please run this script with sudo access"
     exit 1
-fi
-}
 else
     logs_folder="/var/log/roboshop-v2"
     logs_file="${logs_folder}/${0}.log"
 fi
+}
+
 timestamp(){
     date "+%F %T"
 }
