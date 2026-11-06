@@ -1,4 +1,4 @@
-source ./common.
+source ./common.sh
 
 check_root
 
