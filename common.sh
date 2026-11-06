@@ -91,6 +91,16 @@ java_setup(){
     mv target/shipping.jar shipping.jar
     validate $? "Moving shipping.jar"
 }
+python_setup(){
+    dnf install python3.14 python3.14-pip -y &>>$logs_file
+    validate $? "Installing Python 3.14"
+    
+    python3.14 -m venv /app/.venv
+    validate $? "Creating Virtual environment"
+
+    /app/.venv/bin/pip install -r requirements.txt &>>$logs_file
+    validate $? "Installing dependencies"
+}
 restart()
 {
     systemctl restart $app_name &>>$logs_file
