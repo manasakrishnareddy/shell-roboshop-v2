@@ -55,11 +55,11 @@ app_setup(){
     mkdir -p /app
     validate $? "$(timestamp) [INFO] Creating App Directory"
 
-    curl -L -o /tmp/$app_name.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/$app_name-v4.zip &>>$logs_file
+    curl -L -o "/tmp/$app_name.zip" "https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/$app_name-v4.zip" &>>$logs_file
     validate $? "$(timestamp) [INFO] Downloading $app_name"
 
     cd /app
-    unzip /tmp/$app_name.zip &>>$logs_file
+    unzip "/tmp/$app_name.zip"   &>>$logs_file
     validate $? "$(timestamp) [INFO] Unzipping $app_name"
 }
 systemd_setup(){
