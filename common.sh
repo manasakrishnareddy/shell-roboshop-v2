@@ -40,7 +40,7 @@ nodejs_setup(){
     validate $? "$(timestamp) [INFO] Installing dependencies"
 }
 
-app_setup(
+app_setup(){
     id roboshop &>>$logs_file
     if  [ $? -ne 0 ]; then 
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$logs_file
@@ -61,7 +61,7 @@ app_setup(
     cd /app
     unzip /tmp/$app_name.zip &>>$logs_file
     validate $? "$(timestamp) [INFO] Unzipping $app_name"
-)
+}
 systemd_setup(){
     sed -i "s/DOMAIN_NAME/$domain_name/g" "$script_dir/$app_name.service"
     cp "$script_dir/$app_name.service" /etc/systemd/system/$app_name.service
